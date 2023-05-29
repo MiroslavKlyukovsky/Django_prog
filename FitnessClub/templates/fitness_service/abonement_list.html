@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <a href="{% url 'fitness_service:abonement-create-super' %}" class="btn btn-secondary link-to-page">
+        Create
+    </a>
+    <ul>
+        {% for abonement in abonement_list %}
+            <li>
+                {{ abonement.id }}
+                ({% for club in abonement.club.all %}
+                    {{ club.location }},
+                {% endfor %})
+                ({% for day in abonement.days.all %}
+                    {{ day.name }},
+                {% endfor %})
+                Price: {{ abonement.price }}$
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

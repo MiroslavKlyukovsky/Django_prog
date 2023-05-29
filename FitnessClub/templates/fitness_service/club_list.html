@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <ul style="margin-top: 25px;">
+        {% for club in club_list %}
+            <li>
+                <a href="{% url 'fitness_service:club-detail' pk=club.id %}">{{ club.location }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

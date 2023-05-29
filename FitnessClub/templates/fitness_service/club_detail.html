@@ -1,0 +1,68 @@
+<style>
+    .partition {
+        border: 1px solid gray;
+        border-radius: 4px;
+        margin-bottom: 7px;
+        width: 355px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+    }
+    .image_div {
+        margin: 8px 8px;
+        padding: 6px;
+        border: 1px solid;
+        border-radius: 4px;
+        {#height: 40px;#}
+        width: 200px;
+        overflow: hidden;
+    }
+    .info {
+        margin: 8px 8px;
+    }
+    {#.day-container {#}
+    {#    display: flex;#}
+    {#    align-items: center;#}
+    {#    white-space: nowrap;//ssss#}
+    {#}#}
+    {##}
+    {#.day-container .btn {#}
+    {#    margin-left: 30px; /* Adjust the value as needed */#}
+    {#}#}
+</style>
+
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1 style="margin-top: 22px;">{{ club.location }}</h1>
+    <hr>
+    {% for day in days %}
+        <div class="partition">
+            <div class="image_div">{{ day.name }} [{{ day.exercise }}]</div>
+            <div class="info">
+                {% if day in day_list %}
+                    <a href="" class="btn btn-success link-to-page">
+                        Available
+                    </a>
+                {% else %}
+                     <a href="{% url 'fitness_service:abonement-create' pk=club.id %}" class="btn btn-danger link-to-page">
+                        Not Available
+                     </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <div>
+        <a href="{% url 'fitness_service:abonement-create' pk=club.id %}" class="btn link-to-page" style="color: blue">
+         Abonement
+        </a>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+

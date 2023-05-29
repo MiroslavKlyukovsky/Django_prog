@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <h1>Create abonement</h1>
+    <h6>One day costs 15$, if you want one day in several clubs it will be counted as several days.</h6>
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Buy" class="btn btn-primary">
+    </form>
+{% endblock %}
